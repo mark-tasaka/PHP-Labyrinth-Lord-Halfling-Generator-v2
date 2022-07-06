@@ -4,6 +4,18 @@ The Labyrinth Lord Halfling Character Generator Version 2 is the second iteratio
 
 -----------
 
+A live version of the Labyrinth Lord Halfling Character Generator Version 2 is available at:
+
+https://www.oldschooladventures.org/ll/classes/halfling/
+
+-----------
+
+
+
+Update 1.01: 2022-07-06
+
+Updates to halfling.php, classDetails.php, and xp.php.  A link to the live version o the Labyrinth Lord Halfling Character Generator Version 2 has been added.
+
 
 Initial commit: 2022-07-03
 
