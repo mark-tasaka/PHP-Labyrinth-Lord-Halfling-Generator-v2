@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Labyrinth Lord Dwarf Character Generator Version 2</title>
+<title>Labyrinth Lord Halfling Character Generator Version 2</title>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 	<meta charset="UTF-8">
-	<meta name="description" content="Dungeon Crawl Classics Dwarf Character Generator..">
+	<meta name="description" content="Dungeon Crawl Classics Halfling Character Generator..">
 	<meta name="keywords" content="Dungeon Crawl Classics,,HTML5,CSS,JavaScript">
 	<meta name="author" content="Mark Tasaka 2022">
     
     <link rel="icon" href="../../../../images/favicon/icon.png" type="image/png" sizes="16x16"> 
 		
 
-	<link rel="stylesheet" type="text/css" href="css/dwarf.css">
+	<link rel="stylesheet" type="text/css" href="css/halfling.css">
     
     
     
@@ -35,7 +35,6 @@
     include 'php/wealth.php';
     include 'php/nameSelect.php';
     include 'php/gender.php';
-    include 'php/languages.php';
     include 'php/movementRate.php';
     
 
@@ -224,11 +223,10 @@
             }       
     
             $strength = $abilityScoreArray[0];
+            $strength = demiHumanScoreMin($strength);
             $dexterity = $abilityScoreArray[1];
+            $dexterity = demiHumanScoreMin($dexterity);
             $constitution = $abilityScoreArray[2];
-
-            $constitution = demiHumanScoreMin($constitution);;
-
             $intelligence = $abilityScoreArray[3];
             $wisdom = $abilityScoreArray[4];
             $charisma = $abilityScoreArray[5];
@@ -400,9 +398,9 @@
         $saveSpells = saveSpells($level);
         $saveSpells -= $wisdomMod;
 
-        $primeReq = primeReq($strength);
-        $dwarfAbility = dwarfClassAbilities($alignment);
-        $dwarfStronghold = dwarfStronghold($level);
+        $primeReq = primeReq($dexterity, $strength);
+        $halflingAbility = halflingClassAbilities($alignment);
+        $halflingStronghold = halflingStronghold($level);
 
         $strengthDescription = strengthModifierDescription($strength);
         $dexterityDescription = dexterityModifierDescription($dexterity);
@@ -684,7 +682,7 @@
        
        
        
-       <span id="class">Dwarf</span>
+       <span id="class">Halfling</span>
        
        <span id="armourClass">
            <?php
@@ -977,8 +975,8 @@
         <span id="classAbilities">
             <?php
                 echo $primeReq;
-                echo $dwarfAbility;
-                echo $dwarfStronghold;
+                echo $halflingAbility;
+                echo $halflingStronghold;
             ?>
         </span>
 
@@ -995,7 +993,7 @@
       
 
   
-       let imgData = "images/dwarf.png";
+       let imgData = "images/halfling.png";
       
         $("#character_sheet").attr("src", imgData);
       

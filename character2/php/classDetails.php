@@ -1,6 +1,6 @@
 <?php
 
-/*Fighter */
+/*Halfling */
 
 function getHitPoints($level, $conMod)
 {
@@ -10,12 +10,12 @@ function getHitPoints($level, $conMod)
     {
         for($i = 0; $i < $level; ++$i)
         {
-            $levelHP = rand(3, 8);
+            $levelHP = rand(2, 6);
             $levelHP += $conMod;
     
-            if($levelHP < 3)
+            if($levelHP < 2)
             {
-                $levelHP = 3;
+                $levelHP = 2;
             }
     
             $hitPoints += $levelHP;
@@ -60,13 +60,9 @@ function saveBreathAttack($level)
     {
         return 10;
     }
-    else if($level >= 7 && $level <= 9)
-    {
-        return 7;
-    }
     else
     {
-        return 4;
+        return 7;
     }
 
 }
@@ -82,13 +78,9 @@ function savePoisonDeath($level)
     {
         return 6;
     }
-    else if($level >= 7 && $level <= 9)
-    {
-        return 4;
-    }
     else
     {
-        return 2;
+        return 4;
     }
 
 }
@@ -104,13 +96,9 @@ function savePetrify($level)
     {
         return 8;
     }
-    else if($level >= 7 && $level <= 9)
-    {
-        return 6;
-    }
     else
     {
-        return 4;
+        return 6;
     }
 
 }
@@ -126,13 +114,9 @@ function saveWands($level)
     {
         return 7;
     }
-    else if($level >= 7 && $level <= 9)
-    {
-        return 5;
-    }
     else
     {
-        return 3;
+        return 5;
     }
 
 }
@@ -148,40 +132,31 @@ function saveSpells($level)
     {
         return 10;
     }
-    else if($level >= 7 && $level <= 9)
-    {
-        return 8;
-    }
     else
     {
-        return 6;
+        return 8;
     }
 
 }
 
-function primeReq($abilityScore)
+
+function primeReq($dexterity, $strength)
 {
-    
-    if($abilityScore >= 3 && $abilityScore <=5)
+    if($dexterity > 12 && $strength > 12)
+    {
+        if($dexterity > 15 && $strength > 15)
         {
-            return "-10% Experience Point Adjustment (Prime Requisite)</br></br>";
+            return "+10% Experience Point Adjustment (Prime Requisite)<br/><br/>";
         }
-    else if($abilityScore >= 6 && $abilityScore <=8)
+        else
         {
-            return "-5% Experience Point Adjustment (Prime Requisite)</br></br>";
+            return "+5% Experience Point Adjustment (Prime Requisite)<br/><br/>";
         }
-    else if($abilityScore >= 13 && $abilityScore <=15)
-        {
-            return "+5% Experience Point Adjustment (Prime Requisite)</br></br>";
-        }
-    else if($abilityScore >= 16 && $abilityScore <=18)
-        {
-            return "+10% Experience Point Adjustment (Prime Requisite)</br></br>";
-        }
+    }
     else
-        {
-            return "";
-        }
+    {
+        return "";
+    }
     
 }
 
@@ -423,21 +398,9 @@ function getThaco($level, $abiltyMod)
     {
         $thaco = 15;
     }
-    else if($level == 7 || $level == 8)    
-    {
-        $thaco = 14;
-    }
-    else if($level == 9)    
-    {
-        $thaco = 13;
-    }
-    else if($level == 10 || $level == 11)    
-    {
-        $thaco = 12;
-    }
     else
     {
-        $thaco = 11;
+        $thaco = 14;
     }
 
     $thaco -= $abiltyMod;
@@ -467,22 +430,21 @@ function demiHumanScoreMin($abilityScore)
 }
 
 
-function dwarfStronghold($level)
+function halflingStronghold($level)
 {
-    if($level < 9)
+    if($level < 8)
     {
         return "";
     }
     else
     {
-        return "Option of creating an underground stronghold that will attract dwarves from far and wide.";
+        return "Can build a stronghold in a serene, beautiful valley, that will attract halflings from great distances to settle there.";
     }
 }
 
-function dwarfClassAbilities($alignment)
+function halflingClassAbilities($alignment)
 {
-    return "Infavision 60'.<br/><br/>2 in 6 chance of detecting traps, false walls, hidden constructs,
-    or noticing if passages are slopped.<br/><br/>Ability to speak the Common tongue, Dwarvish, " . $alignment . " Alignment tongue, Goblin, Gnome and Kobold.<br/><br/>";
+    return "90% ability to hide in bushes or outdoor cover.<br/><br/>2 in 6 chance of hiding in shadows or behind cover in <br/>underground environments.<br/><br/>+1 to all missile attack rolls.<br/><br/>-2 AC bonus when attack by creatures greater than human sized.<br/><br/>";
 }
 
 
